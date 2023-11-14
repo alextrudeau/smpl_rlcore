@@ -7,7 +7,7 @@ import math
 import random
 
 import numpy as np
-from gym import spaces, Env
+from gymnasium import spaces, Env
 from scipy.integrate import odeint
 
 from .utils import *

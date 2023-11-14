@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-ReactorEnv simulates a general reactor environment. This is supposed to be an template environment. The documentations in that file is enhanced and provided comment lines (# ---- standard ---- and # /---- standard ----) enclose pieces of code that should be reused by most of smpl environments. Please consult the smplEnvBase class.
+ReactorEnv simulates a general reactor environment. This is supposed to be a template environment. The documentations in that file is enhanced and provided comment lines (# ---- standard ---- and # /---- standard ----) enclose pieces of code that should be reused by most of smpl environments. Please consult the smplEnvBase class.
 """
 
 import json
@@ -10,15 +10,16 @@ import random
 import warnings
 
 import matplotlib.pyplot as plt
-import mpctools as mpc
+# import mpctools as mpc
 import numpy as np
 import torch
-from gym import spaces, Env  # to create an openai-gym environment https://gym.openai.com/
-from mzutils import SimplePriorityQueue
+from gymnasium import spaces, Env  # to create an openai-gym environment https://gym.openai.com/
+from mzutils_rlcore import SimplePriorityQueue
 from scipy.integrate import solve_ivp  # the ode solver
 from tqdm import tqdm
 
-from .utils import *
+# from .utils import *
+from utils import *
 
 np.seterr(all='warn')
 # ---- to capture numpy warnings ---- 
@@ -58,13 +59,12 @@ class ReactorPID:
             action.append(np.clip(a, self.min_action[i], self.max_action[i]))
         return np.array(action)
 
-
+"""
 class ReactorMPC:
-    """a simple MPC controller.
-
-    Returns:
-        [type]: action.
-    """
+    # a simple MPC controller.
+    #
+    # Returns:
+    #  [type]: action.
 
     def __init__(self, Nt=20, dt=0.1, Q=np.eye(3) * 0.1, R=np.eye(2) * 0.0, P=np.eye(3) * 0.1):
         self.Nt = Nt  # control and prediction horizons
@@ -136,6 +136,7 @@ class ReactorMPC:
 
         # return solution status and optimal input
         return uopt
+"""
 
 
 class ReactorMLPReinforceAgent(torch.nn.Module):

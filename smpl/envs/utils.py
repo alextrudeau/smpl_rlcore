@@ -8,8 +8,8 @@ import warnings
 
 import matplotlib.pyplot as plt
 import numpy as np
-from gym import spaces, Env  # to create an openai-gym environment https://gym.openai.com/
-from mzutils import SimplePriorityQueue, normalize_spaces, denormalize_spaces, mkdir_p
+from gymnasium import spaces, Env  # to create an openai-gym environment https://gym.openai.com/
+from mzutils_rlcore import SimplePriorityQueue, normalize_spaces, denormalize_spaces, mkdir_p
 from scipy.integrate import solve_ivp  # the ode solver
 from torch.utils.data import Dataset
 from tqdm import tqdm
